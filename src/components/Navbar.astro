@@ -1,0 +1,37 @@
+---
+import '../styles/global.css'
+import logo from '../assets/logo.svg'
+import { Image } from "astro:assets";
+const menuItens = [
+  { text: 'Perfil', href:'/perfil'},
+  { text: 'Pagamentos', href: '/pagamentos' },
+  { text: 'Calendario', href: '/calendario' },
+  { text: 'Mensalidade', href: '/mensalidade' }
+];
+---
+
+<nav class="bg-blue-900 py-4">
+  <div class="container mx-3 ml-2 px-4 flex items-center justify-start">
+    <a class="flex items-center space-x-2">
+      <Image src={logo} alt="logo" class="h-7 w-7">
+      <a href="/"><span class="text-white text-xl font-bold">Arca</span></a>
+    </a>
+    <ul class="flex items-center justify-center space-x-6">
+      {menuItens.map((item) => (
+        <li class="relative group">
+          <a href={item.href} class="text-blue-50 hover:text-blue-400 px-3 py-2 rounded-md duration-300 items-center">
+            {item.text}
+          </a>
+          {/* Linha indicadora  */}
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-700 group-hover:w-full transition-all duration-700"></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .container{
+    max-width: 1280px;
+  }
+</style>
